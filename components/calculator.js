@@ -1,12 +1,25 @@
+import {useState} from 'react'
+
 import { NumberButton, Button } from "./widgets";
 
 const Calculator = ({}) => {
+    const [displayValue, setDisplayValue] = useState("")
+
+    function appendToValue(newChar) {
+        setDisplayValue(displayValue + newChar)
+    }
+
+    function appendDecimal() {
+        if(!displayValue.includes('.')) {
+            setDisplayValue(displayValue + '.')
+        }
+    }
 
     return (
         <div>
             <div className="row">
                 <div className="col">
-                    <input type="number" className="form-control"/>
+                    <input type="text" className="form-control" value={displayValue} readOnly/>
                 </div>
             </div>
             <div className="row">
@@ -39,13 +52,13 @@ const Calculator = ({}) => {
             </div>
             <div className="row">
                 <div className="col">
-                    <NumberButton value={7} />
+                    <NumberButton value={7} onClick={appendToValue} />
                 </div>
                 <div className="col">
-                    <NumberButton value={8} />
+                    <NumberButton value={8} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <NumberButton value={9} />
+                    <NumberButton value={9} onClick={appendToValue}/>
                 </div>
                 <div className="col">
                     <Button>×</Button>
@@ -53,13 +66,13 @@ const Calculator = ({}) => {
             </div>
             <div className="row">
                 <div className="col">
-                    <NumberButton value={4} />
+                    <NumberButton value={4} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <NumberButton value={5} />
+                    <NumberButton value={5} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <NumberButton value={6} />
+                    <NumberButton value={6} onClick={appendToValue}/>
                 </div>
                 <div className="col">
                     <Button>−</Button>
@@ -67,13 +80,13 @@ const Calculator = ({}) => {
             </div>
             <div className="row">
                 <div className="col">
-                    <NumberButton value={1} />
+                    <NumberButton value={1} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <NumberButton value={2} />
+                    <NumberButton value={2} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <NumberButton value={3} />
+                    <NumberButton value={3} onClick={appendToValue}/>
                 </div>
                 <div className="col">
                     <Button>+</Button>
@@ -81,13 +94,13 @@ const Calculator = ({}) => {
             </div>
             <div className="row">
                 <div className="col">
-                    
+                    <Button onClick={() => setDisplayValue("")}>CE</Button>
                 </div>
                 <div className="col">
-                    <NumberButton value={0} />
+                    <NumberButton value={0} onClick={appendToValue}/>
                 </div>
                 <div className="col">
-                    <Button>.</Button>
+                    <NumberButton value={"."} onClick={appendDecimal}/>
                 </div>
                 <div className="col">
                     <Button>=</Button>
