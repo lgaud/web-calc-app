@@ -5,13 +5,10 @@ const Profile = () => {
 
   return (
     <>
-      <h1>Profile</h1>
-      {user && (
-        <>
-          <p>Your session:</p>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
+      <h1 className="display-4">Profile</h1>
+      <div className="my-3">
+      {user && <p class="lead">Welcome {user.username}!</p>}
+      </div>
 
       <style jsx>{`
         pre {

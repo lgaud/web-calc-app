@@ -6,15 +6,10 @@ const Home = () => {
 
   return (
     <>
-      <div className="mb-5"/>
+      <div className="my-3">
+      </div>
       <Calculator/>
 
-      {user && (
-        <>
-          <p>Currently logged in as:</p>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
     </>
   )
 }
