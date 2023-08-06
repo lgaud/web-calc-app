@@ -9,6 +9,7 @@
     "@hapi/iron": "6.0.0",
     "bootstrap": "^5.3.1",
     "cookie": "0.4.1",
+    "mathjs": "^11.9.1",
     "next": "latest",
     "next-connect": "0.8.1",
     "passport": "^0.4.1",
