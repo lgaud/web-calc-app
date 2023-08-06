@@ -250,10 +250,13 @@ const Calculator = ({}) => {
                 </div>
             </div>
         </div>
-        <h3>History</h3>
+        <h3 className='display-4'>History</h3>
+        <ul className='list-group'>
         {
-            history.map((expr) => <div>{expr}</div>)
+            
+            history.map((expr) => <li className='list-group-item'>{expr}</li>)
         }
+        </ul>
         </ErrorBoundary>
     )
 };
