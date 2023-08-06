@@ -4,6 +4,8 @@ import { NumberButton, Button } from "./widgets";
 
 import { create, all } from 'mathjs/number'
 
+import {ErrorBoundary} from "react-error-boundary"
+
 const math = create(all)
 
 const binaryOperators = ["*", "/", "+", "-"]
@@ -145,6 +147,7 @@ const Calculator = ({}) => {
 
    
     return (
+        <ErrorBoundary fallback={<div>Something went wrong rendering the calculator</div>}>
         <div className="card mx-auto" style={{maxWidth: "25rem"}}>
             <div className="card-body">
                 <div className="row mb-2 gx-1">
@@ -242,6 +245,7 @@ const Calculator = ({}) => {
                 </div>
             </div>
         </div>
+        </ErrorBoundary>
     )
 };
 

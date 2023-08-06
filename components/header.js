@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import { useUser } from '../lib/hooks'
 
+import {ErrorBoundary} from "react-error-boundary"
+
 const Header = () => {
   const user = useUser()
 
   return (
+    <ErrorBoundary fallback={<div>Something went wrong rendering the header</div>}>
     <header className="p-3 bg-primary text-white">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -38,6 +41,7 @@ const Header = () => {
       </div>
       
     </header>
+    </ErrorBoundary>
   )
 }
 
