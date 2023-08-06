@@ -15,7 +15,7 @@ const Calculator = ({}) => {
     const [currentInputValue, setCurrentInputValue] = useState("")
 
     // The result of a calculation (or retrieved memory)
-    const [result, setResult] = useState("")
+    const [result, setResult] = useState(0)
 
     const [expression, setExpression] = useState("")
 
@@ -39,6 +39,7 @@ const Calculator = ({}) => {
         if (val === "") {
             return result;
         }
+        return val;
     }
 
     function appendToValue(newChar) {
@@ -60,7 +61,7 @@ const Calculator = ({}) => {
             expr = ""
         }
         else {
-            val = getInputValue()
+            val = getInputValueOrResult()
             expr = expression;
         }
         if(val !== "") {
@@ -97,7 +98,8 @@ const Calculator = ({}) => {
 
     function percentClicked() {
         // Unlike a binary operation, percent should evaluate right away
-        const expr = getExpressionToEvaluate() + "%"
+        let expr = getExpressionToEvaluate();
+        expr = appendOrUpdateOperator(expr, '%').trimEnd()
         setCurrentInputValue("")
         setResult(math.evaluate(expr))
         setExpression(expr)
@@ -112,14 +114,13 @@ const Calculator = ({}) => {
     }
 
     function equalClicked() {
-        const val = getInputValue()
-        const expr = getExpressionToEvaluate(val)
+        const expr = getExpressionToEvaluate()
         const newResult = math.evaluate(expr)
         const newExpression = `${expr} =`
         setCurrentInputValue("")
         setResult(newResult)
-        setExpression(newExpression)
-        setHistory([newExpression + " " + newResult, ...history])
+        setExpression("")
+        setHistory([newExpression + " " + newResult, ...history])        
     }
 
     function memoryStore() {
@@ -145,7 +146,7 @@ const Calculator = ({}) => {
 
     function clear() {
         setCurrentInputValue("")
-        setResult("")
+        setResult(0)
         setExpression("")
         setHasOpenBracket(false)
     }
@@ -183,7 +184,7 @@ const Calculator = ({}) => {
                         <Button onClick={sqrtClicked}>√</Button>
                     </div>
                     <div className="col">
-                        <Button onClick={() => operatorClicked("**")}>^</Button>
+                        <Button onClick={() => operatorClicked("^")}>^</Button>
                     </div>
                     <div className="col">
                         <Button onClick={percentClicked}>%</Button>
