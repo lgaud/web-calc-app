@@ -23,6 +23,8 @@ const Calculator = ({}) => {
 
     const [hasOpenBracket, setHasOpenBracket] = useState(false)
 
+    const [history, setHistory] = useState([])
+
     function getInputValue() { 
         // Returns the sanitized input value
         if(currentInputValue !== "") {
@@ -112,9 +114,12 @@ const Calculator = ({}) => {
     function equalClicked() {
         const val = getInputValue()
         const expr = getExpressionToEvaluate(val)
+        const newResult = math.evaluate(expr)
+        const newExpression = `${expr} =`
         setCurrentInputValue("")
-        setResult(math.evaluate(expr))
-        setExpression(`${expr} =`)
+        setResult(newResult)
+        setExpression(newExpression)
+        setHistory([newExpression + " " + newResult, ...history])
     }
 
     function memoryStore() {
@@ -245,6 +250,10 @@ const Calculator = ({}) => {
                 </div>
             </div>
         </div>
+        <h3>History</h3>
+        {
+            history.map((expr) => <div>{expr}</div>)
+        }
         </ErrorBoundary>
     )
 };
