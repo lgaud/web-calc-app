@@ -6,60 +6,33 @@ const Header = () => {
 
   return (
     <header>
-      <nav>
-        <ul>
-          <li>
+      <nav className="py-2 px-5 bg-dark border-bottom d-flex justify-content-end">
+        <ul className="nav">
+          <li className="nav-item">
             <Link href="/" legacyBehavior>
-              <a>Home</a>
+              <a className="nav-link link-light px-2">Home</a>
             </Link>
           </li>
           {user ? (
             <>
-              <li>
+              <li className="nav-item">
                 <Link href="/profile" legacyBehavior>
-                  <a>Profile</a>
+                  <a className="nav-link link-light px-2">Profile</a>
                 </Link>
               </li>
               <li>
-                <a href="/api/logout">Logout</a>
+                <a className="nav-link link-light px-2" href="/api/logout">Logout</a>
               </li>
             </>
           ) : (
-            <li>
+            <li className="nav-item">
               <Link href="/login" legacyBehavior>
-                <a>Login</a>
+                <a className="nav-link link-light px-2">Login</a>
               </Link>
             </li>
           )}
         </ul>
       </nav>
-      <style jsx>{`
-        nav {
-          max-width: 42rem;
-          margin: 0 auto;
-          padding: 0.2rem 1.25rem;
-        }
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-        li {
-          margin-right: 1rem;
-        }
-        li:first-child {
-          margin-left: auto;
-        }
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        header {
-          color: #fff;
-          background-color: #333;
-        }
-      `}</style>
     </header>
   )
 }
