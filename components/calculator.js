@@ -145,8 +145,8 @@ const Calculator = ({}) => {
 
    
     return (
-        <div class="card" style={{maxWidth: "400px"}}>
-            <div class="card-body">
+        <div className="card" style={{maxWidth: "400px"}}>
+            <div className="card-body">
                 <div className="row mb-2 gx-1">
                     <div className="col">
                         <small className='text-muted'>{expression}</small>
