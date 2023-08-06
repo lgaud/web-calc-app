@@ -7,7 +7,13 @@ export default async function user(req, res) {
     const user = (session && (await findUser(session))) ?? null
 
     // Don't return sensitive info to client!
-    res.status(200).json({ user: {username: user.username, history: user.history} })
+    if(user !== null) {
+      res.status(200).json({ user: {username: user.username, history: user.history} })
+    }
+    else {
+      res.status(200).json({ user: null })
+    }
+        
   } catch (error) {
     console.error(error)
     res.status(500).end('Authentication token is invalid, please log in')
