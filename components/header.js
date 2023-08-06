@@ -5,61 +5,38 @@ const Header = () => {
   const user = useUser()
 
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/" legacyBehavior>
-              <a>Home</a>
-            </Link>
-          </li>
-          {user ? (
-            <>
-              <li>
-                <Link href="/profile" legacyBehavior>
-                  <a>Profile</a>
-                </Link>
-              </li>
-              <li>
-                <a href="/api/logout">Logout</a>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link href="/login" legacyBehavior>
-                <a>Login</a>
+    <header className="p-3 bg-primary text-white">
+      <div className="container">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <span className="display-6 col">Web Calc</span> 
+          <ul className="nav text-end">
+            <li className="nav-item">
+              <Link href="/" legacyBehavior>
+                <a className="nav-link link-light px-2">Home</a>
               </Link>
             </li>
-          )}
-        </ul>
-      </nav>
-      <style jsx>{`
-        nav {
-          max-width: 42rem;
-          margin: 0 auto;
-          padding: 0.2rem 1.25rem;
-        }
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-        li {
-          margin-right: 1rem;
-        }
-        li:first-child {
-          margin-left: auto;
-        }
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        header {
-          color: #fff;
-          background-color: #333;
-        }
-      `}</style>
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <Link href="/profile" legacyBehavior>
+                    <a className="nav-link link-light px-2">Profile</a>
+                  </Link>
+                </li>
+                <li>
+                  <a className="nav-link link-light px-2" href="/api/logout">Logout</a>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <Link href="/login" legacyBehavior>
+                  <a className="nav-link link-light px-2">Login</a>
+                </Link>
+              </li>
+            )}
+          </ul>          
+        </div>
+      </div>
+      
     </header>
   )
 }

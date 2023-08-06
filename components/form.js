@@ -1,82 +1,49 @@
 import Link from 'next/link'
 
 const Form = ({ isLogin, errorMessage, onSubmit }) => (
-  <form onSubmit={onSubmit}>
+  <div className="card text-center mx-auto my-5" style={{maxWidth: "25rem"}}> 
+  <form onSubmit={onSubmit} className="card-body"> 
     <label>
       <span>Username</span>
-      <input type="text" name="username" required />
+      <input type="text" className="form-control w-100" name="username" required />
     </label>
     <label>
       <span>Password</span>
-      <input type="password" name="password" required />
+      <input type="password" className="form-control" name="password" required />
     </label>
     {!isLogin && (
       <label>
         <span>Repeat password</span>
-        <input type="password" name="rpassword" required />
+        <input type="password" className="form-control" name="rpassword" required />
       </label>
     )}
 
-    <div className="submit">
+    <div className="py-2">
       {isLogin ? (
         <>
+          <button type="submit"  className="btn btn-primary mb-2">Login</button>
+          <div>
           <Link href="/signup" legacyBehavior>
             <a>I don't have an account</a>
           </Link>
-          <button type="submit">Login</button>
+          </div>
         </>
       ) : (
         <>
-          <Link href="/login" legacyBehavior>
+          <button type="submit" className="btn btn-primary mb-2">Signup</button>
+          <div>
+          <Link href="/login" legacyBehavior>           
             <a>I already have an account</a>
           </Link>
-          <button type="submit">Signup</button>
+          </div>
         </>
       )}
     </div>
 
     {errorMessage && <p className="error">{errorMessage}</p>}
 
-    <style jsx>{`
-      form,
-      label {
-        display: flex;
-        flex-flow: column;
-      }
-      label > span {
-        font-weight: 600;
-      }
-      input {
-        padding: 8px;
-        margin: 0.3rem 0 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .submit {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .submit > a {
-        text-decoration: none;
-      }
-      .submit > button {
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        background: #fff;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .submit > button:hover {
-        border-color: #888;
-      }
-      .error {
-        color: brown;
-        margin: 1rem 0 0;
-      }
-    `}</style>
   </form>
+  </div>
 )
 
 export default Form

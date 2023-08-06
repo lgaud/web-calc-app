@@ -145,98 +145,100 @@ const Calculator = ({}) => {
 
    
     return (
-        <div>
-            <div className="row">
-                <div className="col">
-                    <small className='text-muted'>{expression}</small>
-                    <input type="text" className="form-control text-end" value={currentInputValue || result} readOnly/>
+        <div className="card mx-auto" style={{maxWidth: "25rem"}}>
+            <div className="card-body">
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <small className='text-muted'>{expression}</small>
+                        <input type="text" className="form-control text-end" aria-label="Input & Results" value={currentInputValue || result} readOnly/>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={memoryAdd}>M+</Button>
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <Button onClick={memoryAdd}>M+</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={memorySubtract}>M-</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={memoryRecall} disabled={(memory === null)}>MR</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={memoryClear}>MC</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={memoryStore}>MS</Button>
+                    </div>
                 </div>
-                <div className="col">
-                    <Button onClick={memorySubtract}>M-</Button>
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <Button onClick={sqrtClicked}>√</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={() => operatorClicked("**")}>^</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={percentClicked}>%</Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={() => operatorClicked("/")}>÷</Button>
+                    </div>
                 </div>
-                <div className="col">
-                    <Button onClick={memoryRecall} disabled={(memory === null)}>MR</Button>
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <NumberButton value={7} onClick={appendToValue} />
+                    </div>
+                    <div className="col">
+                        <NumberButton value={8} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={9} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <Button onClick={() => operatorClicked("*")}>×</Button>
+                    </div>
                 </div>
-                <div className="col">
-                    <Button onClick={memoryClear}>MC</Button>
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <NumberButton value={4} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={5} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={6} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <Button onClick={() => operatorClicked("-")}>−</Button>
+                    </div>
                 </div>
-                <div className="col">
-                    <Button onClick={memoryStore}>MS</Button>
+                <div className="row mb-2 gx-1">
+                    <div className="col">
+                        <NumberButton value={1} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={2} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={3} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <Button onClick={() => operatorClicked("+")}>+</Button>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={sqrtClicked}>√</Button>
-                </div>
-                <div className="col">
-                    <Button onClick={() => operatorClicked("**")}>^</Button>
-                </div>
-                <div className="col">
-                    <Button onClick={percentClicked}>%</Button>
-                </div>
-                <div className="col">
-                    <Button onClick={() => operatorClicked("/")}>÷</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <NumberButton value={7} onClick={appendToValue} />
-                </div>
-                <div className="col">
-                    <NumberButton value={8} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={9} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <Button onClick={() => operatorClicked("*")}>×</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <NumberButton value={4} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={5} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={6} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <Button onClick={() => operatorClicked("-")}>−</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <NumberButton value={1} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={2} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={3} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <Button onClick={() => operatorClicked("+")}>+</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={clear}>CE</Button>
-                </div>
-                <div className="col">
-                    <NumberButton value={0} onClick={appendToValue}/>
-                </div>
-                <div className="col">
-                    <NumberButton value={"."} onClick={appendDecimal}/>
-                </div>
-                <div className="col">
-                    <Button onClick={equalClicked}>=</Button>
+                <div className="row gx-1">
+                    <div className="col">
+                        <Button onClick={clear}>CE</Button>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={0} onClick={appendToValue}/>
+                    </div>
+                    <div className="col">
+                        <NumberButton value={"."} onClick={appendDecimal}/>
+                    </div>
+                    <div className="col">
+                        <Button onClick={equalClicked}>=</Button>
+                    </div>
                 </div>
             </div>
         </div>
