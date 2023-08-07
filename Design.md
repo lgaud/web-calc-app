@@ -43,12 +43,12 @@ The calculator will leverage [mathjs](https://mathjs.org/) to parse the expressi
 # UX
 
 There will 4 pages for the application: 
-    - The main page with the calculator
-    - A login form
-    - A signup form
-    - A user profile page, showing the history.
+- The main page with the calculator
+- A login form
+- A signup form
+- A user profile page
     
-The calculator functionality should be entirely front end based, except to save and load history. Styling will be done primarily using Bootstrap. The MVP version will use default styles but this can be customized easily in the future.
+The calculator functionality should be entirely front end based, except to save and load history. Styling will be done primarily using Bootstrap.
 
 # Security
 
